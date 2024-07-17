@@ -60,6 +60,11 @@ public class HomeController {
 		return "student/detail";
 	}
 	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(String st_num) {
+		int result = studentDao.delete(st_num);
+		return "redirect:/";
+	}
 	
 	
 }
