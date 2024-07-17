@@ -7,6 +7,7 @@
 - 필요한 dependencies 는 `spring-jdbc`, `mybatis`, `mybatis-sping`, `commns-dbcp2`, `mysql-connector`가 필요하다.
 
 - 다음의 dependencies 를 `maven repository`에서 검색하여 `pom.xml` 등록한다.
+- webmvc 뒤에 넣기
 ```xml
 <!-- 
 	spring jdbc 로 검색 
@@ -77,4 +78,26 @@
 	
 <!-- mybatis component scan -->
 <mybatis-spring:scan base-package="com.callor.student.persistence"/>
+```
+
+## 영어, 숫자 외 다른 문자(한글) 데이터는 깨져서 나옴 그래서 그걸 위해서 filter 를 설정해줘야함 
+- `web.xml` 의 web-app 다음에 작성 
+```xml
+	<filter>
+		<filter-name>encKor</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encKor</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
 ```
