@@ -52,5 +52,15 @@ public class HomeController {
 //		return "home";
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(String st_num,Model model) {
+		StudentVO studentVO = studentDao.findById(st_num);
+		model.addAttribute("ST",studentVO);
+		return "student/detail";
+	}
+	
+	
+	
 }
 
