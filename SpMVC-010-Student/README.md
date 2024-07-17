@@ -50,3 +50,31 @@
 </dependency>
 
 ```
+
+## DBMS 연동을 위한 `context.xml` 파일 작성하기
+- `Spring Project`의 `/WEB-INF/spring/appServlet` 폴더에 `spring bean confiruration file` 을 생성한다
+- 이 때 파일은 `*-context.xml` 형식의 패턴으로 이름을 정한다.
+-`*-context.xml` 형식의 패턴으로 이름을 정하면 `web.xml`에서 파일을 자동으로 인식하고 프로젝트가 실행될 때 설정값을 읽어서 프로젝트를 초기화 한다.
+- 여기에서는 `db-context.xml`라는 이름으로 설정할 것이다.
+```xml
+<!-- db-context.xml 에는 다음의 3가지 bean과 기타 설정이 추가된다 -->
+<!-- dataSource bean -->
+<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
+	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+	<property name="url" value="jdbc:mysql://localhost:3306/mydb"/>
+	<property name="username" value="user1"/>
+	<property name="password" value="12341234"/>
+</bean>
+<!-- SqlSessionFactoryBean -->
+<bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="ds"/>
+	<property name="typeAliasesPackage" value="com.callor.student.models"/>
+</bean>
+<!-- SqlSessionTemplate bean -->
+<bean class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg ref="sessionFactoryBean" />
+</bean>
+	
+<!-- mybatis component scan -->
+<mybatis-spring:scan base-package="com.callor.student.persistence"/>
+```
