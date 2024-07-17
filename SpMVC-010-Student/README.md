@@ -80,7 +80,9 @@
 <mybatis-spring:scan base-package="com.callor.student.persistence"/>
 ```
 
-## 영어, 숫자 외 다른 문자(한글) 데이터는 깨져서 나옴 그래서 그걸 위해서 filter 를 설정해줘야함 
+## filter 한글인코딩
+- 영어, 숫자 외 다른 문자(한글) 데이터는 깨져서 나옴 그래서 그걸 위해서 filter 를 설정해줘야함 
+- 한글을 encoding 하는 도구 
 - `web.xml` 의 web-app 다음에 작성 
 ```xml
 	<filter>
