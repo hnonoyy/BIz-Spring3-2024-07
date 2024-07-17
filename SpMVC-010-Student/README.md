@@ -8,31 +8,41 @@
 
 - 다음의 dependencies 를 `maven repository`에서 검색하여 `pom.xml` 등록한다.
 ```xml
-<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+<!-- 
+	spring jdbc 로 검색 
+	spring webmvc 와 버전 일치시킬것
+-->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-jdbc</artifactId>
     <version>5.2.25.RELEASE</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+<!-- mybatis 로 검색하여 mybatis, mybatis-spring 찾기 -->
 <dependency>
     <groupId>org.mybatis</groupId>
     <artifactId>mybatis</artifactId>
     <version>3.5.16</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+<!-- 
+	spring-webmvc 5.2.x.RELEASE 를 사용할 때는  
+	mybatis-spring을 반드시 3.0.0 이하 버전을 사용할 것 
+-->
 <dependency>
     <groupId>org.mybatis</groupId>
     <artifactId>mybatis-spring</artifactId>
     <version>3.0.0</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+<!-- dbcp 로 검색하여 commons-dbcp2 를 사용할 것 -->
 <dependency>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-dbcp2</artifactId>
     <version>2.12.0</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+<!-- 
+	mysql 로 검색하고 
+	반드시 mysql-connector-j 를 사용할 것 
+	mysql-connector-java는 한글문제와 timeZome 설정부분에 문제를 일으킬 수 있음
+-->
 <dependency>
     <groupId>com.mysql</groupId>
     <artifactId>mysql-connector-j</artifactId>
