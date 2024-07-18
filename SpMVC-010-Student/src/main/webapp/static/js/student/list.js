@@ -30,5 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
       //   alert(target.textContent);
     }
   };
-  student_data.addEventListener("click", onDataClickHandler);
+  student_data?.addEventListener("click", onDataClickHandler);
 });

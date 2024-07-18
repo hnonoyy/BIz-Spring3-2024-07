@@ -7,9 +7,9 @@
 
 	<insert id="insert">
 		INSERT INTO TBL_STUDENT(
-		st_num, st_num, st_dept, st_grade, st_tel, st_addr)
+		st_num, st_name, st_dept, st_grade, st_tel, st_addr)
 		VALUES(
-		#{st_num}, #{st_num}, #{st_dept},#{st_grade}, #{st_tel}, #{st_addr}
+		#{st_num}, #{st_name}, #{st_dept},#{st_grade}, #{st_tel}, #{st_addr}
 		)
 	</insert>
 	<update id="update">

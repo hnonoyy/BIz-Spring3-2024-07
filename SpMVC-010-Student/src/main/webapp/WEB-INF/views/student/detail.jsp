@@ -30,10 +30,10 @@
 				<th>주소</th><td>${ST.st_addr }</td>
 			</tr>
 		</table>
-		<div>
+		<div data-st_num="${ST.st_num }">
 			<button class="list">리스트로</button>
 			<button class="update">수정</button>
-			<button class="delete" data-st_num="${ST.st_num }">삭제</button>
+			<button class="delete" >삭제</button>
 		</div>
 	</section>
 </body>
