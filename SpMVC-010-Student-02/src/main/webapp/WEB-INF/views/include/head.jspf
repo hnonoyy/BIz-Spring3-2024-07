@@ -1,0 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<head>
+	<meta charset="UTF-8">
+
+	<title>학사관리</title>
+	<link href="${rootPath }/static/css/home.css" rel="stylesheet">
+</head>
