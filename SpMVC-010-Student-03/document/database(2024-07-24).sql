@@ -70,4 +70,5 @@ from tbl_score
 	join tbl_subject
 		on sc_sbcode = sc_code;
 
-
+desc tbl_student;
+desc tbl_subject;
