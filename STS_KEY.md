@@ -1,0 +1,15 @@
+# sts 바로가기 key
+- `코드 한줄 삭제하기` : ctrl + d
+- `한줄 복사하기` : 블럭, ctrl + c
+- `붙여넣기` : ctrl + v
+- `한줄 잘라내기` : 블럭,ctrl + x
+- `키보드로 블럭 설정` : shift + 방향키
+- `코드 라인의 맨 앞으로 가기` : Home
+- `코드 라인의 맨 끝으로 가기` : End
+- `코드 전체 맨 마지막 라인으로 가기` : ctrl + End, ctrl + PgDn
+- `코드 전체 맨 처음 라인으로 가기` : ctrl + Home, ctrl + PgUp
+- `코드 생성 Menu 호출` : alt + shift + s
+- `import 명령라인 최적화` : ctrl + Shift + o
+- `파일이름, 폴더이름 등 변경` : F2
+- `새로고침` : F5
+- `저장하기` : ctrl + s
