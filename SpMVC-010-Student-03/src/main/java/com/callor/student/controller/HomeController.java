@@ -6,9 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.student.models.StudentVO;
 import com.callor.student.persistence.StudentDao;
+import com.callor.student.service.StudentService;
 
 /**
  * Handles requests for the application home page.
@@ -16,14 +18,14 @@ import com.callor.student.persistence.StudentDao;
 @Controller
 public class HomeController {
 	
+	private final StudentService studentService;
 	private final StudentDao studentDao;
-	
-	public HomeController(StudentDao studentDao) {
+	public HomeController(StudentService studentService, StudentDao studentDao) {
 		super();
+		this.studentService = studentService;
 		this.studentDao = studentDao;
 	}
 
-	
 	// http://localhost:8080/student/ 로 request 가 오면
 	// http://localhost:8080/student 로 request 가 오면
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -38,6 +40,20 @@ public class HomeController {
 	public String insert() {
 		return "student/input";
 	}
+	@ResponseBody
+	@RequestMapping(value = "/num_check", method = RequestMethod.GET)
+	public String stNumCheck(String st_num) {
+		/*
+		 * findById(id) method 는 PK를 기준으로 SELECT 하여 그 결과를 return 한다.
+		 * 만약 id에 해당하는 데이터가 있으면 그 데이터를 return 하고 없으면 null 값을 return 한다. 
+		 */
+		StudentVO studentVO = studentDao.findById(st_num);
+		if(studentVO == null) {
+			return "NOT FOUND";
+		}
+		return "FOUND";
+	}
+	
 	
 	// 학생정보 입력화면에서 데이터를 입력한 후 전송(저장)을 클릭했을 때 
 	// 데이터를 전달받은 method
@@ -55,7 +71,11 @@ public class HomeController {
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(String st_num,Model model) {
-		StudentVO studentVO = studentDao.findById(st_num);
+		/*
+		 * studentDao.findById()를 
+		 * studentService.findById()로 변경
+		 */
+		StudentVO studentVO = studentService.findById(st_num);
 		model.addAttribute("ST",studentVO);
 		return "student/detail";
 	}

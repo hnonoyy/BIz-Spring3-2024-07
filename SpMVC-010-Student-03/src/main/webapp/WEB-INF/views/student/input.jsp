@@ -2,13 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath }" var="rootPath"></c:set>
-
-<!DOCTYPE html>
-<html lang="ko">
-<%@ include file="/WEB-INF/views/include/head.jspf"%>
 <link rel="stylesheet" href="${rootPath}/static/css/student/input.css">
-<body>
-	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<section class="student input">
 		<form method="post">
 			<fieldset>
@@ -18,6 +12,7 @@
 			</legend>
 			<div><label for="st_num">학번</label>
 				<input type="text" id="st_num" name="st_num" value="${ST.st_num }"></div>
+				<input type="hidden" name="st_new" value="${ST.st_num }"/>
     		<div><label for="st_name">이름</label>
     			<input type="text" id="st_name" name="st_name" value="${ST.st_name }"></div>
     		<div><label for="st_dept">학과</label>
@@ -32,6 +27,3 @@
 			</fieldset>
 		</form>
 	</section>
-	
-</body>
-</html>

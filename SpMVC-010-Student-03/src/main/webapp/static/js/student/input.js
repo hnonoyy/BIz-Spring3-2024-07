@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const input_form = document.querySelector("section.student.input form");
   // input_form? input_form이 null이 아닐 때만 실행해라
   const input_st_num = input_form?.querySelector("#st_num");
+  const input_st_new = input_form?.querySelector("#st_new");
   const input_st_name = input_form?.querySelector("#st_name");
   const input_st_dept = input_form?.querySelector("#st_dept");
   const input_st_grade = input_form?.querySelector("#st_grade");
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const onSaveHandler = () => {
     // 반드시 handler 안에 적어야지 실행됨
     const text_st_num = input_st_num.value;
+    const text_st_new = input_st_new.value;
     const text_st_name = input_st_name.value;
     const text_st_dept = input_st_dept.value;
     const text_st_grade = input_st_grade.value;
@@ -28,6 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const text_st_addr = input_st_addr.value;
 
     if (!onValidate(text_st_num, "학번", input_st_num)) return false;
+    if (!text_st_new) {
+      // 학번 중복 검사
+      fetch(`${rootPath}/num_check?st_num=${text_st_num}`, (res) => {});
+    }
     if (!onValidate(text_st_name, "이름", input_st_name)) return false;
     if (!onValidate(text_st_dept, "학과", input_st_dept)) return false;
     if (!onValidate(text_st_grade, "학년", input_st_grade)) return false;
