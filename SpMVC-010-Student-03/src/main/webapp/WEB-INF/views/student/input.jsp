@@ -12,7 +12,7 @@
 			</legend>
 			<div><label for="st_num">학번</label>
 				<input type="text" id="st_num" name="st_num" value="${ST.st_num }"></div>
-				<input type="hidden" name="st_new" value="${ST.st_num }"/>
+				<input type="hidden" name="st_new" id="st_new" value="${ST.st_num }"/>
     		<div><label for="st_name">이름</label>
     			<input type="text" id="st_name" name="st_name" value="${ST.st_name }"></div>
     		<div><label for="st_dept">학과</label>
