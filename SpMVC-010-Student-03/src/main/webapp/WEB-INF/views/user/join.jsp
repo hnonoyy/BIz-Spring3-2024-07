@@ -2,12 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath }" var="rootPath"></c:set>
-
-<!DOCTYPE html>
 <html lang="ko">
-<%@ include file="/WEB-INF/views/include/head.jspf"%>
 <body>
-	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-	<h1>관리자</h1>
+	<h1>회원가입</h1>
 </body>
 </html>
