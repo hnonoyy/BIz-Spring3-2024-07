@@ -8,9 +8,13 @@
 	<fieldset>
 		<legend>회원가입</legend>
 			<input type="text" placeholder="USER NAME" />
+			<span>*</span>
 			<input type="password" placeholder="PASSWORD" />
+			<span>*</span>
 			<input type="text" placeholder="본명" />
+			<span>*</span>
 			<input type="text" placeholder="별명" />
+			<span>*</span>
 			<input type="button" value="회원가입" />
 	</fieldset>
 </form>
