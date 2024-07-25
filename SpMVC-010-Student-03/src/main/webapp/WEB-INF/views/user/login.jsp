@@ -8,8 +8,11 @@
 <form class="user login" method="POST">
 	<fieldset>
 		<span>로그인</span>
-		<input type="text" placeholder="ID를 입력하세요" name="username" /> <input
-			type="password" placeholder="PASSWORD를 입력하세요" name="password" /> <input
-			type="button" value="로그인" />
+		<c:if test="${not empty MSG }">
+			<h4>${MSG }</h4>
+		</c:if>
+		<input type="text" placeholder="ID를 입력하세요" name="username" /> 
+		<input type="password" placeholder="PASSWORD를 입력하세요" name="password" /> 
+		<button>로그인</button>
 	</fieldset>
 </form>

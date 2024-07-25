@@ -22,25 +22,32 @@ form.user.login {
     margin: 20px auto;
     color: #5aa05f;
   }
+
+  h4 {
+    background-color: red;
+    color: yellow;
+  }
+
   input {
     margin: 20px;
     padding: 20px;
     border-radius: 20px;
     background-color: #effff2;
     width: 70%;
-    border: 1px solid #effff2;
     outline: none;
     box-shadow: inset 7px 2px 10px #dbe2df, inset -5px -5px 12px #fff;
-
+    border: 1px solid transparent;
     &:hover {
       background-color: #63b374;
       box-shadow: none;
       color: white;
+      opacity: 0.7;
     }
   }
-  input[type="button"] {
+  button {
     background-color: #ace9aa;
     border: 1px solid #ace9aa;
+    border-radius: 20px;
     width: 50%;
     font-size: medium;
     font-weight: bold;
@@ -54,15 +61,5 @@ form.user.login {
       border: 1px solid #63b374;
       color: white;
     }
-  }
-}
-
-form.user.join {
-  span {
-    padding: 6px 16px 10px 16px;
-    margin: 8px auto;
-    width: 85%;
-    color: red;
-    display: none;
   }
 }
