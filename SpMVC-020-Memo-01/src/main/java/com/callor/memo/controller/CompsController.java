@@ -26,6 +26,12 @@ public class CompsController {
 	public String input() {
 		return null;
 	}
+	@RequestMapping(value = "/input",method=RequestMethod.POST)
+	public String input(Memo memo) {
+		log.debug(memo.toString());
+		memoService.insert(memo);
+		return "redirect:/";
+	}
 	// localhost:8080/memo/comps/update/333 과 같이 요청이 오면 
 	// {m_seq} path에 있는 문자열을 값으로 인식하고 m_seq 변수에 할당하라
 	@RequestMapping(value = "/update/{m_seq}", method = RequestMethod.GET)
