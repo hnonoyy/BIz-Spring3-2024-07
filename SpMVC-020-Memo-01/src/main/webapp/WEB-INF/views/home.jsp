@@ -7,17 +7,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-witth, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>오늘은 나의 날</title>
 <link rel="stylesheet" href="${rootPath }/static/css/main.css">
+<script>
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath }/static/js/list.js"></script>
 </head>
 <body>
 	<h1>오늘은 내 인생의 가장 젊은날</h1>
 	<section class="memo main">
 		<article class="list">
-			<div class="data-time">
-				<input placeholder="작성일" name="m_date"/>
-				<input placeholder="작성시각" name="m_time"/>
+			<div class="date-time">
+				<input type="date" placeholder="작성일" name="m_date"/>
+				<input type="time" placeholder="작성시각" name="m_time"/>
 				<input type="button" value="새로작성"/>
 			</div>
 			<ul class="memo-list">
