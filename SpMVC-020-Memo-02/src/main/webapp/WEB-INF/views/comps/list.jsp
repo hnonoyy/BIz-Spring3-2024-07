@@ -12,7 +12,7 @@
 		<li data-seq="${MEMO.m_seq }">
 			<i class="fa-regular fa-user"></i>
 			<i>&#128512;</i> 
-			<span>${MEMO.m_subject }</span> 
+			<span class="memo-content">${MEMO.m_subject }</span> 
 			<i class="delete">&times;</i>
 		</li>
 	</c:forEach>
