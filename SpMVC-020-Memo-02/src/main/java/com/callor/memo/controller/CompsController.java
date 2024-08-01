@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,37 +20,50 @@ import lombok.extern.slf4j.Slf4j;
 public class CompsController {
 
 	private final MemoService memoService;
-	
+
 	public CompsController(MemoService memoService) {
 		super();
 		this.memoService = memoService;
 	}
-	@RequestMapping(value = "/input", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/input", method = RequestMethod.GET)
 	public String input() {
 		return null;
 	}
-	
-	@RequestMapping(value = "/list",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
 		List<Memo> memoList = memoService.selectAll();
-		model.addAttribute("MEMOS",memoList);
+		model.addAttribute("MEMOS", memoList);
 		return null;
 	}
-	
-	@RequestMapping(value = "/input",method=RequestMethod.POST)
-	public String input(Memo memo) {
+
+	@RequestMapping(value = "/input", method = RequestMethod.POST)
+	public String input(@RequestBody Memo memo) {
 		log.debug(memo.toString());
-		memoService.insert(memo);
-		return "redirect:/";
+		String m_seq = memo.getM_seq();
+		if (m_seq == null || m_seq.isBlank()) {
+			memoService.insert(memo);
+		} else {
+			memoService.update(memo);
+		}
+		return "redirect:/comps/list";
 	}
-	// localhost:8080/memo/comps/update/333 과 같이 요청이 오면 
+
+	// localhost:8080/memo/comps/update/333 과 같이 요청이 오면
 	// {m_seq} path에 있는 문자열을 값으로 인식하고 m_seq 변수에 할당하라
 	@RequestMapping(value = "/update/{m_seq}", method = RequestMethod.GET)
 	public String update(@PathVariable(name = "m_seq") String m_seq, Model model) {
-		log.debug("PK: {}",m_seq);
+		log.debug("PK: {}", m_seq);
 
 		Memo memo = memoService.findById(m_seq);
-		model.addAttribute("MEMO",memo);
+		model.addAttribute("MEMO", memo);
 		return "comps/input";
+	}
+	
+	@RequestMapping(value = "/delete/{m_seq}")
+	public String delete(@PathVariable(name="m_seq") String m_seq) {
+		memoService.delete(m_seq);
+		return "redirect:/comps/list";
 	}
 }

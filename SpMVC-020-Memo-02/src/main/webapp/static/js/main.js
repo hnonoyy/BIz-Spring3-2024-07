@@ -27,6 +27,23 @@ document.addEventListener("DOMContentLoaded", () => {
     subBox.innerHTML = html;
   };
 
+  const onDeleteMemo = async (e) => {
+    const mSeq = e.target.closest("LI").dataset.seq;
+
+    if (!confirm("메모를 삭제할까요?")) return;
+
+    const res = await fetch(`${rootPath}/comps/delete/${mSeq}`);
+
+    if (res.status !== 200) {
+      alert("서버문제로 삭제를 할 수 없습니다");
+      return false;
+    }
+
+    const html = await res.text();
+    listBox.innerHTML = html;
+    alert("삭제를 완료했습니다.");
+  };
+
   listBox?.addEventListener("click", (e) => {
     // listBox 내의 클릭된 요소
     const target = e.target;
@@ -34,6 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
       onNewMemo();
     if (target.tagName === "SPAN" && target.classList.contains("memo-content"))
       onUpdateMemo(e);
+    if (target.tagName === "I" && target.classList.contains("memo-delete"))
+      onDeleteMemo(e);
   });
 
   const onSaveMemo = () => {
@@ -60,7 +79,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const form = subBox.querySelector("form.memo.input");
     // form의 input에 입력된 데이터를 Ajax 방식으로 전송하기 위해 변환하기
+    // form의 데이터를 FormData type으로 변환시키기
     const formData = new FormData(form);
+
+    // spring server 에 fetch()를 사용하여 데이터를 전송할 때는
+    // 데이터 일렬화 (또는 직렬화, String serialize) 한다.
+    const planFormData = Object.fromEntries(formData.entries());
+    // 문자열화
+    const payload = JSON.stringify(planFormData);
+
+    // fetch() 로 보내기 위한 설정
+    const fetchConfig = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: payload,
+    };
+    fetch(`${rootPath}/comps/input`, fetchConfig)
+      .then((res) => {
+        if (res.status === 200) alert("저장완료");
+        return res.text();
+      })
+      .then((html) => (listBox.innerHTML = html));
   };
 
   subBox?.addEventListener("click", (e) => {

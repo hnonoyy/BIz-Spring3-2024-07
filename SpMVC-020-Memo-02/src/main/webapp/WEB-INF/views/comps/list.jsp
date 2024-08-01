@@ -13,7 +13,7 @@
 			<i class="fa-regular fa-user"></i>
 			<i>&#128512;</i> 
 			<span class="memo-content">${MEMO.m_subject }</span> 
-			<i class="delete">&times;</i>
+			<i class="memo-delete">&times;</i>
 		</li>
 	</c:forEach>
 </ul>
